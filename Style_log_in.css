@@ -1,0 +1,99 @@
+body {
+    background-color:rgb(71,66,87);
+    font-family: Helvetica;
+}
+.block {
+    margin-top: 40px;
+    width:600px;
+    height: 490px;
+    border:1px solid rgb(168,100,168);
+    border-radius: 20px;
+    background-color: rgb(36,36,54);
+}
+.block2 {
+    margin-top: -10px;
+    width:600px;
+    height: 530px;
+    border:1px solid rgb(168,100,168);
+    border-top:none;
+    border-radius: 20px;
+    background-color: rgb(36,36,54);
+}
+.input {
+    background-color:black;
+    color:white;
+    width:300px;
+    height:35px;
+    border:1px solid rgb(168,100,168);
+    margin-top:40px;
+}
+p{
+    color:white;
+}
+.p1{
+    padding-top: 30px;
+    padding-left: 50px;
+    text-align:left;
+    color:white;
+}
+.btn {
+    padding:10px;
+    background-color:rgb(168,100,168);
+    margin-top:40px;
+    cursor: pointer;
+    border: none;
+    border-radius:20px;
+    color:white;
+}
+a {
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+}
+h2 {
+    text-align:left;
+    padding-left: 50px;
+    color:white;
+}
+.h2 {
+    padding-top: 30px;
+    text-align:left;
+    padding-left: 50px;
+    color:white;
+}
+.img {
+    width:35px;
+    height:35px;
+    display: block;
+    margin-bottom: 40px;
+}
+.icon-setup {
+    position: absolute;
+    top:172px;
+    left:410px;
+}
+.reset-back{
+    padding:10px;
+    width:150px;
+    font-size:18px;
+    background-color:rgb(168,100,168);
+    margin-top:10px;
+    cursor: pointer;
+    border: none;
+    border-radius:20px;
+    color:white;
+}
+.otp {
+    padding:10px;
+    width:150px;
+    font-size:18px;
+    background-color:rgb(168,100,168);
+    margin-top:20px;
+    cursor: pointer;
+    border: none;
+    border-radius:20px;
+    color:white;
+}
+.btn-pos {
+    margin-top:20px;
+}

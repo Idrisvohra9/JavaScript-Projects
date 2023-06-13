@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+
+<html lang="en-IN">
+  <head>
+    <title>Javascript String Automated Methods</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Perform Various Operations on the string.</h1>
+    </div>
+    <p id="str">String:</p>
+    <button class="btn btn-primary" id="arrange" onclick="Arrange();">
+      Arrange as per index
+    </button>
+
+    <div class="terminal">
+      <p id="q">What would you like to perform?</p>
+      <div id="main">
+        1. Enter one more string and compare.
+        <div class="radio">
+          <input
+            type="radio"
+            name="choice"
+            onclick="Show_Comp_trmnl();"
+            class="select"
+            id="compare"
+          />
+          <label class="set-label" for="compare">Select</label>
+        </div>
+
+        <br />2. Find length.
+        <div class="radio">
+          <input
+            type="radio"
+            name="choice"
+            onclick="Show_Len_trmnl();"
+            class="select"
+            id="length"
+          />
+          <label class="set-label" for="length">Select</label>
+        </div>
+
+        <br />3. Slicing as per index.
+        <div class="radio">
+          <input
+            type="radio"
+            name="choice"
+            onclick="Show_Slice_trmnl();"
+            class="select"
+            id="slice"
+          />
+          <label class="set-label" for="slice">Select</label>
+        </div>
+
+        <br />4. Slicing without negative indexing.
+        <div class="radio">
+          <input
+            type="radio"
+            name="choice"
+            onclick="Show_Substring_trmnl();"
+            class="select"
+            id="substring"
+          />
+          <label class="set-label" for="substring">Select</label>
+        </div>
+
+        <br />5. Slicing as per index, length of the slice.
+        <div class="radio">
+          <input
+            type="radio"
+            name="choice"
+            onclick="Show_Substr_trmnl();"
+            class="select"
+            id="substr"
+          />
+          <label class="set-label" for="substr">Select</label>
+        </div>
+
+        <br />6. Find and replace.
+        <div class="radio">
+          <input
+            type="radio"
+            name="choice"
+            onclick="Show_Replace_trmnl();"
+            class="select"
+            id="replace"
+          />
+          <label class="set-label" for="replace">Select</label>
+        </div>
+
+        <br />7. Convert to uppercase or lower case.
+        <div class="radio">
+          <input
+            type="radio"
+            name="choice"
+            onclick="Show_Upr_Lwr_trmnl();"
+            class="select"
+            id="upr-lwrCase"
+          />
+          <label class="set-label" for="upr-lwrCase">Select</label>
+        </div>
+
+        <br />8. Concat Other String.
+        <div class="radio">
+          <input
+            type="radio"
+            name="choice"
+            onclick="Show_Conc_trmnl();"
+            class="select"
+            id="concat"
+          />
+          <label class="set-label" for="concat">Select</label>
+        </div>
+
+        <br />9. padStart, padEnd.
+        <div class="radio">
+          <input
+            type="radio"
+            name="choice"
+            onclick="Show_Padst_trmnl();"
+            class="select"
+            id="padStart-end"
+          />
+          <label class="set-label" for="padStart-end">Select</label>
+        </div>
+
+        <br />10. Find a specific character according to index.
+        <div class="radio">
+          <input
+            type="radio"
+            name="choice"
+            onclick="Show_CharAt_trmnl()"
+            class="select"
+            id="charAt"
+          />
+          <label class="set-label" for="charAt">Select</label>
+        </div>
+
+        <br />11. Split string to an array.
+        <div class="radio">
+          <input
+            type="radio"
+            name="choice"
+            onclick="Show_Split_trmnl()"
+            class="select"
+            id="split"
+          />
+          <label class="set-label" for="split">Select</label>
+        </div>
+
+        <br />12. Find the index first and last occurunce of a substring in a
+        string.
+        <div class="radio">
+          <input
+            type="radio"
+            name="choice"
+            onclick="Show_IndexOf_trmnl()"
+            class="select"
+            id="indexOf-lastIndexOf"
+          />
+          <label class="set-label" for="indexOf-lastIndexOf">Select</label>
+        </div>
+
+        <br />13. Find the total occurunces of a substring in a string.
+        <div class="radio">
+          <input
+            type="radio"
+            name="choice"
+            onclick="Show_Match_trmnl();"
+            class="select"
+            id="match"
+          />
+          <label class="set-label" for="match">Select</label>
+        </div>
+
+        <br />14. check if the string has a substring or not.
+        <div class="radio">
+          <input
+            type="radio"
+            name="choice"
+            onclick="Show_Includes_trmnl()"
+            class="select"
+            id="includes"
+          />
+          <label class="set-label" for="includes">Select</label>
+        </div>
+      </div>
+      <div id="compare-trmnl"></div>
+      <div id="length-trmnl"></div>
+      <div id="slice-trmnl"></div>
+      <div id="substring-trmnl"></div>
+      <div id="substr-trmnl"></div>
+      <div id="replace-trmnl"></div>
+      <div id="upr-lwrCase-trmnl"></div>
+      <div id="concat-trmnl"></div>
+      <div id="padStart-end-trmnl"></div>
+      <div id="charAt-trmnl"></div>
+      <div id="split-trmnl"></div>
+      <div id="indexOf-lastIndexOf-trmnl"></div>
+      <div id="match-trmnl"></div>
+      <div id="includes-trmnl"></div>
+      <!-- <button id="back" class="btn-default">Back</button> -->
+    </div>
+    <script>
+      let string = prompt("Enter a string: ");
+      // let string="This is a string for testing purposes";
+      let mainstr = document.getElementById("str");
+      mainstr.innerHTML += string;
+
+      let arrange = document.getElementById("arrange");
+
+      // Terminal objects for the toggling the select:
+
+      let Comp_trmnl = document.getElementById("compare-trmnl");
+      let Len_trmnl = document.getElementById("length-trmnl");
+      let Slice_trmnl = document.getElementById("slice-trmnl");
+      let Substring_trmnl = document.getElementById("substring-trmnl");
+      let Substr_trmnl = document.getElementById("substr-trmnl");
+      let Replace_trmnl = document.getElementById("replace-trmnl");
+      let Upr_lwr_trmnl = document.getElementById("upr-lwrCase-trmnl");
+      let Conc_trmnl = document.getElementById("concat-trmnl");
+      let Padst_trmnl = document.getElementById("padStart-end-trmnl");
+      let CharAt_trmnl = document.getElementById("charAt-trmnl");
+      let Split_trmnl = document.getElementById("split-trmnl");
+      let IndexOf_trmnl = document.getElementById("indexOf-lastIndexOf-trmnl");
+      let Match_trmnl = document.getElementById("match-trmnl");
+      let Includes_trmnl = document.getElementById("includes-trmnl");
+
+      // Back button for all terminals buttons
+      let back_btn = document.createElement("button");
+      back_btn.innerText = "Back";
+      back_btn.setAttribute("class", "btn btn-group-justified btn-light");
+      back_btn.addEventListener("click", setNull);
+
+      function Arrange() {
+        // creates a <table> element and a <tbody> element
+        var tbl = document.createElement("table");
+        var tblBody = document.createElement("tbody");
+
+        // creating all cells
+        for (var i = 0; i < 2; i++) {
+          // creates a table row
+          var row = document.createElement("tr");
+
+          for (var j = 0; j < string.length; j++) {
+            // Create a <td> element and a text node, make the text
+            // node the contents of the <td>, and put the <td> at
+            // the end of the table row
+            var cell = document.createElement("td");
+            if (i < 1) var cellText = document.createTextNode(string.charAt(j));
+            else var cellText = document.createTextNode(j);
+            cell.appendChild(cellText);
+            row.appendChild(cell);
+          }
+
+          // add the row to the end of the table body
+          tblBody.appendChild(row);
+        }
+
+        // put the <tbody> in the <table>
+        tbl.appendChild(tblBody);
+        // tbl.setAttribute("border", "2");
+        mainstr.innerHTML = "";
+        mainstr.appendChild(tbl);
+
+        arrange.remove();
+      }
+      function Show_Comp_trmnl() {
+        Comp_trmnl.innerHTML =
+          "<h1 style='margin-top:5px;'>Compare</h1><h6>Enter 2nd String:</h6>" +
+          "<input type='text' class='field' id='second-str' style='display:inline;'>\
+            <button id='ok' class='btn btn-primary' onclick='Compare();'>Ok</button>\
+            <p style='color:pink;' id='place'></p>";
+        Comp_trmnl.appendChild(back_btn);
+      }
+      function setNull() {
+        Comp_trmnl.innerHTML = "";
+        Len_trmnl.innerHTML = "";
+        Slice_trmnl.innerHTML = "";
+        Substring_trmnl.innerHTML = "";
+        Substr_trmnl.innerHTML = "";
+        Replace_trmnl.innerHTML = "";
+        Upr_lwr_trmnl.innerHTML = "";
+        Conc_trmnl.innerHTML = "";
+        Padst_trmnl.innerHTML = "";
+        CharAt_trmnl.innerHTML = "";
+        Split_trmnl.innerHTML = "";
+        IndexOf_trmnl.innerHTML = "";
+        Match_trmnl.innerHTML = "";
+        Includes_trmnl.innerHTML = "";
+      }
+      function Compare() {
+        let getstr = document.getElementById("second-str");
+        let place = document.getElementById("place");
+        let ok_btn = document.getElementById("ok");
+        if (getstr.value == string)
+          place.innerText =
+            "'" + string + "'" + " = " + "'" + getstr.value + "'";
+        else if (getstr.value == "")
+          place.innerText = "The string was empty ~Could not be compared";
+        else
+          place.innerText =
+            "'" + string + "'" + " != " + "'" + getstr.value + "'";
+        getstr.remove();
+        ok_btn.remove();
+      }
+
+      function Show_Len_trmnl() {
+        Len_trmnl.innerHTML = "<h2 id='place2'></h2>";
+        let place = document.getElementById("place2");
+        place.innerText = `The length of the string above is ${string.length}.`;
+        Len_trmnl.appendChild(back_btn);
+      }
+      function Show_Slice_trmnl() {
+        Slice_trmnl.innerHTML =
+          "<h3>Slice the part of the string according to Index (Negative indexing is also allowed):</h3>" +
+          "<label for='start'>Starting point:</label><input type='number' class='field' id='start' style='width:40px;' placeholder='*'><br>" +
+          "<label for='end'>Ending point:</label><input type='number' class='field' id='end' style='width:40px;'><br>" +
+          "<button class='btn btn-primary' onclick='Slice();'>Return Slice</button>" +
+          "<p id='place3'></p>";
+        Slice_trmnl.appendChild(back_btn);
+      }
+      function Slice() {
+        let place = document.getElementById("place3");
+        let start = parseInt(document.querySelector("#start").value);
+        let end = document.querySelector("#end").value;
+
+        if (end == "") {
+          place.innerText = `Sliced String: ${string.slice(start)}`;
+        } else {
+          place.innerText = `Sliced String: ${string.slice(
+            start,
+            parseInt(end)
+          )}`;
+        }
+      }
+      function Show_Substring_trmnl() {
+        Substring_trmnl.innerHTML =
+          "<h3>Slice the part of the string according to Index (Negative indexing is NOT allowed!):</h3>" +
+          "<label for='start2'>Starting point:</label><input type='number' class='field' id='start2' style='width:40px;' placeholder='*'><br>" +
+          "<label for='end2'>Ending point:</label><input type='number' class='field' id='end2' style='width:40px;'><br>" +
+          "<button class='btn btn-primary' onclick='Substring();'>Return Substring</button>" +
+          "<p id='place4'></p>";
+        Substring_trmnl.appendChild(back_btn);
+      }
+      function Substring() {
+        let place = document.getElementById("place4");
+        let start = parseInt(document.querySelector("#start2").value);
+        let end = document.querySelector("#end2").value;
+
+        if (end == "") {
+          place.innerText = `Substring: ${string.substring(start)}`;
+        } else {
+          place.innerText = `Substring: ${string.substring(
+            start,
+            parseInt(end)
+          )}`;
+        }
+      }
+
+      function Show_Substr_trmnl() {
+        Substr_trmnl.innerHTML =
+          "<h3>Slice the part of the string according to Index (Negative indexing is NOT allowed!), length of the string:</h3>" +
+          "<label for='start3'>Starting point:</label><input type='number' class='field' id='start3' style='width:40px;' placeholder='*'><br>" +
+          "<label for='len'>Length of the substring:</label><input type='number' class='field' id='len' style='width:40px;'><br>" +
+          "<button class='btn btn-primary' onclick='Substr();'>Return Substr</button>" +
+          "<p id='place5'></p>";
+        Substr_trmnl.appendChild(back_btn);
+      }
+      function Substr() {
+        let place = document.getElementById("place5");
+        let start = parseInt(document.querySelector("#start3").value);
+        let len = document.querySelector("#len").value;
+
+        if (len == "") {
+          place.innerText = `Substr: ${string.substr(start)}`;
+        } else {
+          place.innerText = `Substr: ${string.substr(start, parseInt(len))}`;
+        }
+      }
+
+      function Show_Replace_trmnl() {
+        Replace_trmnl.innerHTML =
+          "<h3>Find a part of the string from the string and replace the contents from it:</h3>" +
+          "<label for='find'>Find:</label><input type='text' class='field' id='find' style='width:90px;'><br>" +
+          "<label for='replacestr'>Replace with:</label><input type='text' class='field' id='replacestr' style='width:90px;'><br>" +
+          "<div class='form-check form-switch'><input type='checkbox' id='case-sensitive' class='form-check-input' checked><label for='case-sensitive'>Case sensitive</label></div>" +
+          "<div class='form-check form-switch'><input type='checkbox' id='replace-all' class='form-check-input'><label for='replace-all'>Replace All</label></div>" +
+          "<button class='btn btn-secondary' onclick='Search_replace();'>Replace</button>" +
+          "<p id='place6'></p>" +
+          "<button class='btn btn-success' onclick='Apply_to_the_main_Str();'>Apply to the original string</button><br>";
+        Replace_trmnl.appendChild(back_btn);
+      }
+      function Search_replace() {
+        let find = document.getElementById("find").value;
+        let replaceStr = document.getElementById("replacestr").value;
+        let place = document.getElementById("place6");
+        let case_sensitive = document.querySelector("#case-sensitive");
+        let replace_all = document.querySelector("#replace-all");
+
+        if (case_sensitive.checked && replace_all.checked) {
+          let regex = RegExp(find, "gi");
+          place.innerHTML = string.replace(regex, replaceStr);
+          console.log(string.replace(regex, replaceStr));
+        } else {
+          if (replace_all.checked) {
+            let regex = RegExp(find, "g");
+            place.innerHTML = string.replace(regex, replaceStr);
+            console.log(string.replace(regex, replaceStr));
+          } else if (case_sensitive.checked) {
+            let regex = RegExp(find, "i");
+            place.innerHTML = string.replace(regex, replaceStr);
+            console.log(string.replace(regex, replaceStr));
+          } else {
+            place.innerHTML = string.replace(find, replaceStr);
+            console.log(string.replace(find, replaceStr));
+          }
+        }
+      }
+      function Apply_to_the_main_Str() {
+        let placex = document.querySelector("#place6").innerText;
+        mainstr.innerText = "String:" + placex;
+        string = placex;
+      }
+      function Show_Upr_Lwr_trmnl() {
+        Upr_lwr_trmnl.innerHTML =
+          "<h3>Convert the string to:</h3>" +
+          "<button onclick='uppercase();' class='btn btn-primary'>Uppercase</button>" +
+          "<button onclick='lowercase();' class='btn btn-primary'>Lowercase</button>" +
+          "<p id='place7'></p>" +
+          "<button onclick='Uppr_Lowr_Case();' class='btn btn-secondary'>Apply to the original String</button>";
+        Upr_lwr_trmnl.appendChild(back_btn);
+      }
+      function Uppr_Lowr_Case() {
+        let placex = document.querySelector("#place7").innerText;
+        string = "String:" + placex;
+        string = placex;
+      }
+      function uppercase() {
+        let place = document.querySelector("#place7");
+        place.innerText = string.toUpperCase();
+      }
+      function lowercase() {
+        let place = document.querySelector("#place7");
+        place.innerText = string.toLowerCase();
+      }
+
+      function Show_Conc_trmnl() {
+        Conc_trmnl.innerHTML =
+          "<h3>Concat Other String:</h3>" +
+          "<input type='text' class='field' id='string2'>" +
+          "<button class='btn btn-primary' onclick='Concat();'>Concat</button>" +
+          "<p id='place8'></p>" +
+          "<button onclick='apply();' class='btn btn-secondary'>Apply to the original String</button>";
+        Conc_trmnl.appendChild(back_btn);
+      }
+      function apply() {
+        let placex = document.querySelector("#place8").innerText;
+        mainstr.innerText = "String:" + placex;
+        string.innerText = placex;
+      }
+      function Concat() {
+        let Second_str = document.querySelector("#string2").value;
+        let place = document.querySelector("#place8");
+        place.innerText = string.concat(Second_str);
+      }
+
+      function Show_Padst_trmnl() {
+        Padst_trmnl.innerHTML =
+          "<h3>Add padding in the string on start or in end and symbol you want:</h3>\
+            <h6>The padding quantity should be more than the actual length of the string.(if padding is to be applied on the both sides the starting qty should be more than the end qty).</h6>" +
+          "<label for='atstart'>At start</label><input type='text' class='field' placeholder='Symbols*' id='atstart' style='width:70px;font-size: 12px;'>" +
+          "<label for='atstart-qty'>How much??</label><input type='number' class='field' id='atstart-qty' placeholder='QTY*' style='width:60px;font-size: 12px;'>" +
+          "<br><label for='atend'>At end</label><input type='text' class='field' placeholder='Symbols*' id='atend' style='width:70px;font-size: 12px;'>" +
+          "<label for='atend-qty'>How much??</label><input type='number' class='field' id='atend-qty' placeholder='QTY*' style='width:60px;font-size: 12px;'>" +
+          "<p id='place9'></p>" +
+          "<button class='btn btn-primary' onclick='Padding();'>Apply Padding</button>\
+            <button class='btn btn-group-justified btn-light' onclick='Apply_to_the_main_str();'>Apply to the main string</button>";
+        Padst_trmnl.appendChild(back_btn);
+      }
+      function Padding() {
+        let Start_symbol = document.getElementById("atstart");
+        let Start_qty = document.getElementById("atstart-qty");
+        let End_symbol = document.getElementById("atend");
+        let End_qty = document.getElementById("atend-qty");
+        let place = document.getElementById("place9");
+
+        if (Start_symbol.value == "" && Start_qty.value == "") {
+          place.innerText = string.padEnd(End_qty.value, End_symbol.value);
+          console.log("Only padEnd is applied.");
+        } else if (End_symbol.value == "" && End_qty.value == "") {
+          place.innerText = string.padStart(
+            Start_qty.value,
+            Start_symbol.value
+          );
+          console.log("Only padStart is applied.");
+        } else if (
+          Start_symbol.value != "" &&
+          Start_qty.value != "" &&
+          End_symbol.value != "" &&
+          End_qty.value != ""
+        ) {
+          place.innerText = string.padEnd(End_qty.value, End_symbol.value);
+          document.getElementById("place9").innerText =
+            place.innerText.padStart(Start_qty.value, Start_symbol.value);
+          console.log("Both padding applied.");
+        }
+      }
+      function Apply_to_the_main_str() {
+        let placex = document.querySelector("#place9").innerText;
+        mainstr.innerText = "String:" + placex;
+        string = placex;
+      }
+
+      function Show_CharAt_trmnl() {
+        CharAt_trmnl.innerHTML =
+          "<h2>Find a specific character according to its index:</h2>" +
+          "<label for='index'>Index:</label><input type='number' class='field' id='index'>" +
+          "<p id='place10'></p>" +
+          "<button onclick='CHARat();' class='btn btn-success'>Find</button>";
+        CharAt_trmnl.appendChild(back_btn);
+      }
+      function CHARat() {
+        let index = document.getElementById("index").value;
+        let place = document.getElementById("place10");
+        place.innerText = `CharAt(${index})='${string.charAt(index)}'`;
+      }
+
+      function Show_Split_trmnl() {
+        Split_trmnl.innerHTML =
+          "<h3>Split the string as an array of chars or strings:</h3>\
+            <h5>You have choice to split the string according to character in it or by just pressing the Split button the string shall be splitted in an array with single character spaces:</h5>\
+            <label for='char'>Character wise:</label><input type='text' class='field' maxlength=1 id='char' size=5>\
+            <button class='btn btn-success' onclick='Split();'>Split</button>\
+            <p id='place11'></p>";
+        Split_trmnl.appendChild(back_btn);
+      }
+      function Split() {
+        let char = document.getElementById("char").value;
+        let place = document.getElementById("place11");
+        let split_arr = "";
+        if (char == "") {
+          let str_arr = string.split("");
+          split_arr += "{";
+          for (let i = 0; i < str_arr.length; i++) {
+            split_arr += str_arr[i];
+            if (i != str_arr.length - 1) split_arr += ", ";
+          }
+          split_arr += "}";
+          place.innerText = split_arr;
+        } else {
+          let str_arr = string.split(char);
+          split_arr += "{";
+          for (let i = 0; i < str_arr.length; i++) {
+            split_arr += str_arr[i];
+            if (i != str_arr.length - 1) split_arr += ", ";
+          }
+          split_arr += "}";
+          place.innerText = split_arr;
+        }
+      }
+
+      function Show_IndexOf_trmnl() {
+        IndexOf_trmnl.innerHTML =
+          "<h3>Find the index of the first occurrence and last occurrence of a string in the main string:</h3>\
+            <label for='string'>Enter String:</label>\
+            <input type='text' class='field' id='string' size='20'>\
+            <button class='btn btn-success' onclick='indexOf_lastIndexOf();'>Find</button>\
+            <p id='place12'>";
+        IndexOf_trmnl.appendChild(back_btn);
+      }
+      function indexOf_lastIndexOf() {
+        let s = document.querySelector("#string").value;
+        let place = document.querySelector("#place12");
+        if (!string.includes(s)) {
+          place.innerText =
+            "!! The String does'nt contain the specific string requested !!";
+        } else {
+          place.innerText = `The first occurrence of '${s}' is at ${string.indexOf(
+            s
+          )} and The last occurrence is at ${string.lastIndexOf(s)}.`;
+        }
+      }
+
+      function Show_Match_trmnl() {
+        Match_trmnl.innerHTML =
+          "<h3>Find the total occurrences of a substring in the main string:</h3>\
+            <h5>The string to be entered is case insensitive</h5>\
+            <label for='Mstring'>Enter String:</label>\
+            <input type='text' class='field' id='Mstring'>\
+            <button class='btn btn-success' onclick='Match();'>Tell Occurrence</button>\
+            <p id='place13'>";
+        Match_trmnl.appendChild(back_btn);
+      }
+      function Match() {
+        let s = document.querySelector("#Mstring").value;
+        let place = document.querySelector("#place13");
+
+        if (!string.includes(s)) {
+          place.innerText = "!! The substring does'nt occur even once !!";
+        } else {
+          let regex = new RegExp(s, "gi");
+          let arr_occurrences = string.match(regex);
+          place.innerText = `The substring '${s}' occurrs ${arr_occurrences.length} times.`;
+        }
+      }
+
+      function Show_Includes_trmnl() {
+        Includes_trmnl.innerHTML =
+          "<h3>Enter a substring to check if the main string contains it or not:</h3>\
+            <label for='Istring'>Enter String:</label>\
+            <input type='text' class='field' id='Istring'>\
+            <button class='btn btn-success' onclick='Includes();'>Check</button>\
+            <p id='place14'>";
+        Includes_trmnl.appendChild(back_btn);
+      }
+      function Includes() {
+        let s = document.getElementById("Istring").value;
+        let place = document.querySelector("#place14");
+
+        if (string.includes(s)) {
+          place.innerText = `Yes, '${s}' is included in the Main string.`;
+        } else {
+          place.innerText = `No, '${s}' is not included in the Main string.`;
+        }
+      }
+    </script>
+  </body>
+</html>

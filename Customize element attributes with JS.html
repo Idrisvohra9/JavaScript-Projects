@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html lang="en-IN">
+  <head>
+    <title></title>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      .range {
+        background-color: rgb(17, 17, 96);
+        border-radius: 15px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        margin: 7px;
+      }
+      #additional {
+        display: none;
+      }
+      label{
+        color:purple;
+        font-weight: bold;
+        font-size: 20px;
+      }
+      input[type="radio"]{
+        width:15px;
+        height: 15px;
+      }
+
+      input[type="color"]{
+        border: 5px solid transparent;
+        height: 40px;
+        width: 40px;
+        border-radius:20px
+      }
+    </style>
+  </head>
+  <body>
+    <p id="customize">Customize mee</p>
+    <div class="container mt-3">
+    <form action="Element_attributes" method="post">
+      <h3>
+        Align Content:
+        <input
+          type="radio"
+          id="align-left"
+          name="align"
+          value="Left"
+          onclick="Alignment(this)"
+        />
+        <label for="align-left">Left</label>
+
+        <input
+          type="radio"
+          id="align-center"
+          name="align"
+          value="Center"
+          onclick="Alignment(this)"
+        />
+        <label for="align-center">Center</label>
+
+        <input
+          type="radio"
+          id="align-right"
+          name="align"
+          value="Right"
+          onclick="Alignment(this)"
+        />
+        <label for="align-right">Right</label>
+      </h3>
+      <label for="size">Font size:</label>
+      <span class="range">
+        1px
+        <input
+          type="range"
+          min="1"
+          max="100"
+          step="1"
+          id="range"
+          onchange="fontSize();"
+          name="font-size"
+        />
+        100px
+      </span>
+      <label for="color">Color:</label>
+      <input type="color" id="color" onchange="Changecolor();" name="color" />
+      <label for="bg-color">Background color:</label>
+      <input
+        type="color"
+        id="bg-color"
+        onchange="backgroundColor();"
+        name="background-color"
+      />
+      <br />
+      <br />
+      <br />
+      <button onclick="clickAdditionalCustom();" id="addCustom">
+        Additional Customizations
+      </button>
+      <div id="additional">
+        <h2>Borders:</h2>
+        <label for="borderSize">Size:</label>
+        <span class="range">
+          1px
+          <input
+            type="range"
+            min="1"
+            max="50"
+            step="1"
+            id="borderSize"
+            onchange="CustomBorder(this);"
+            name="borderSize"
+          />
+          50px
+        </span>
+        <h3>
+          Type:
+          <br />
+          <input
+            type="radio"
+            name="borderType"
+            onchange="CustomBorder(this);"
+            id="solid"
+            value="solid"
+          /><label for="solid">Solid</label>
+          <br />
+          <input
+            type="radio"
+            name="borderType"
+            onchange="CustomBorder(this);"
+            id="dotted"
+            value="dotted"
+          /><label for="dotted">Dotted</label>
+          <br />
+          <input
+            type="radio"
+            name="borderType"
+            onchange="CustomBorder(this);"
+            id="dashed"
+            value="dashed"
+          /><label for="dashed">Dashed</label>
+          <br />
+          <input
+            type="radio"
+            name="borderType"
+            onchange="CustomBorder(this);"
+            id="double"
+            value="double"
+          /><label for="double">Double</label>
+          <br />
+          <input
+            type="radio"
+            name="borderType"
+            onchange="CustomBorder(this);"
+            id="inset"
+            value="inset"
+          /><label for="inset">Inset</label>
+          <br />
+          <input
+            type="radio"
+            name="borderType"
+            onchange="CustomBorder(this);"
+            id="outset"
+            value="outset"
+          /><label for="outset">Outset</label>
+          <br />
+          <input
+            type="radio"
+            name="borderType"
+            onchange="CustomBorder(this);"
+            id="ridge"
+            value="ridge"
+          /><label for="ridge">Ridge</label>
+          <br />
+          <input
+            type="radio"
+            name="borderType"
+            onchange="CustomBorder(this);"
+            id="groove"
+            value="groove"
+          /><label for="groove">Groove</label> <br /><br />
+          <label for="borderRadius">Border Radius:</label>
+          <span class="range">
+          1px
+          <input
+            type="range"
+            id="borderRadius"
+            min="1"
+            max="100"
+            step="1"
+            onchange="CustomBorder(this);"
+            name="borderRadius"
+          />
+          100px
+        </span>
+          <br />
+        </h3>
+        <p>
+          Color:
+          <input
+            type="color"
+            id="borderClr"
+            onchange="CustomBorder(this);"
+            name="borderColor"
+          />
+        </p>
+      </div>
+
+      <br />
+      <input type="submit" value="Show The Customized Attributes" />
+    </form>
+  </div>
+    <script>
+      let customize = document.getElementById("customize");
+
+      function Alignment(elem) {
+        let left = document.getElementById("align-left");
+        let center = document.getElementById("align-center");
+        let right = document.getElementById("align-right");
+
+        if (elem == left) {
+          customize.style.textAlign = "left";
+        } else if (elem == center) {
+          customize.style.textAlign = "center";
+        } else {
+          customize.style.textAlign = "right";
+        }
+      }
+      function fontSize() {
+        let value = document.getElementById("range").value;
+        customize.style.fontSize = value + "px";
+      }
+
+      function Changecolor() {
+        let color = document.getElementById("color").value;
+        customize.style.color = color;
+      }
+
+      function backgroundColor() {
+        let bgColor = document.getElementById("bg-color").value;
+        customize.style.backgroundColor = bgColor;
+      }
+
+      function clickAdditionalCustom() {
+        let button = document.getElementById("addCustom");
+        let place = document.getElementById("additional");
+        button.remove();
+        place.style.display = "inline-block";
+      }
+      function CustomBorder(elem) {
+        // Border-size:
+        let borderSize = document.getElementById("borderSize");
+
+        // Border style types:
+        let solid = document.getElementById("solid");
+        let dotted = document.getElementById("dotted");
+        let dashed = document.getElementById("dashed");
+        let double = document.getElementById("double");
+        let inset = document.getElementById("inset");
+        let outset = document.getElementById("outset");
+        let ridge = document.getElementById("ridge");
+        let groove = document.getElementById("groove");
+
+        // Border color:
+        let color = document.getElementById("borderClr");
+
+        // Border Radius:
+        let borderRadius = document.getElementById("borderRadius");
+
+        if (elem == borderSize) {
+          console.log(elem);
+          customize.style.borderWidth = borderSize.value + "px";
+        }
+
+        // Border Style type:
+        else if (elem == solid) {
+          customize.style.borderStyle = "solid";
+        } else if (elem == dotted) {
+          customize.style.borderStyle = "dotted";
+        } else if (elem == dashed) {
+          customize.style.borderStyle = "dashed";
+        } else if (elem == double) {
+          customize.style.borderStyle = "double";
+        } else if (elem == inset) {
+          customize.style.borderStyle = "inset";
+        } else if (elem == outset) {
+          customize.style.borderStyle = "outset";
+        } else if (elem == ridge) {
+          customize.style.borderStyle = "ridge";
+        } else if (elem == groove) {
+          customize.style.borderStyle = "groove";
+        }
+
+        // Border Radius:
+        else if (elem == borderRadius) {
+          customize.style.borderRadius = borderRadius.value + "px";
+        }
+
+        // Border color:
+        else if (elem == color) {
+          customize.style.borderColor = color.value;
+        }
+      }
+    </script>
+  </body>
+</html>

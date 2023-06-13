@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="en-IN">
+
+    <head>
+
+    <title>Login page</title>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="Style_log_in.css" type="text/css">
+    </head>
+    <body>
+        <center>
+            <div class="block">
+                <h2>Log in</h2>
+                <form action="">
+                    <div class="icon-setup">
+                        <img src="user-check.svg" alt="Username:" class="img">
+                        <img src="mail.svg" alt="Email:" class="img">
+                        <img src="keycdn.svg" alt="Password:" class="img">
+                    </div>
+                    <div><input type="text" id="username" class="input" placeholder="StupidGuy101"></div>
+
+                    <div><input type="email" id="email" class="input" placeholder="hello123@gmail.com" /></div>
+
+                    <div><input type="password" id="password" class="input" placeholder="shhh..."></div>
+
+                    <input type="submit" onclick="credsChecker();" value="Login" class="btn">
+                    <input type="reset" value="Reset" class="btn">
+                    <br>
+                    <a href="Forgot_password_page.html">Forgot password?</a>
+                </form>
+            </div>
+        </center>
+        <script>
+            function credsChecker(){
+                var username= document.getElementById("username").value;
+                var password= document.getElementById("password").value;
+                var email= document.getElementById("email").value;
+                if (
+                 username=="Idris" &&
+                 email=="idrisvohra987@gmail.com" && 
+                 password=="123@abc"){
+                    window.alert("You Logged In Successfuly!");
+                }
+                else {
+                    window.alert("Please enter valid Credentials..");
+                }
+            }
+        </script>
+    </body>
+
+
+</html>
