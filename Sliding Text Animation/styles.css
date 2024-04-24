@@ -1,0 +1,38 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
+.animation-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%; /* Adjust height as needed */
+}
+
+.moving-text {
+  transform: translateX(100%);
+  /* position: absolute; */
+  white-space: nowrap;
+  font-size: 18rem; /* Adjust font size as needed */
+  animation: moveText 10s ease-out infinite;
+}
+.moving-text.second {
+  animation-delay: 0.75s;
+}
+.moving-text.third {
+  animation-delay: 1.25s;
+}
+@keyframes moveText {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-172%);
+  }
+}
