@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom FullPage.js Alternative</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      section {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3em;
+      }
+      .navigation {
+        position: fixed;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #888;
+        margin: 10px 0;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .dot.active {
+        background-color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="page" id="section1">Section 1</section>
+    <section class="page" id="section2">Section 2</section>
+    <section class="page" id="section3">Section 3</section>
+    <section class="page" id="section4">Section 4</section>
+    <section class="page" id="section5">Section 5</section>
+    <script src="scripts.js"></script>
+  </body>
+</html>
