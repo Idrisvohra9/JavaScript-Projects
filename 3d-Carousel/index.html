@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background-image: linear-gradient(45deg, #8b5cf6, #ec4899);
+        font-family: "Montserrat", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      .carousel {
+        position: relative;
+        width: 50rem;
+        height: 50rem;
+        perspective: 500px;
+        transform-style: preserve-3d;
+      }
+
+      .card-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transform: rotateY(calc(var(--offset) * 50deg))
+          scaleY(calc(1 + var(--abs-offset) * -0.4))
+          translateZ(calc(var(--abs-offset) * -30rem))
+          translateX(calc(var(--direction) * -5rem));
+        filter: blur(calc(var(--abs-offset) * 1rem));
+        transition: all 0.3s ease-out;
+      }
+
+      .card {
+        width: 100%;
+        height: 100%;
+        padding: 2rem;
+        background-color: hsl(
+          280deg,
+          40%,
+          calc(100% - var(--abs-offset) * 50%)
+        );
+        border-radius: 1rem;
+        color: #9ca3af;
+        text-align: justify;
+        transition: all 0.3s ease-out;
+        overflow: hidden;
+      }
+
+      .card h2 {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+        margin: 0 0 0.7em;
+        color: #1f2937;
+      }
+
+      .card p,
+      .card h2 {
+        transition: all 0.3s ease-out;
+        opacity: var(--active);
+      }
+
+      .card img {
+        width: 100%;
+        height: auto;
+      }
+
+      .nav {
+        color: white;
+        font-size: 5rem;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 50%;
+        z-index: 2;
+        cursor: pointer;
+        user-select: none;
+        background: unset;
+        border: unset;
+      }
+
+      .nav.left {
+        transform: translateX(-100%) translateY(-50%);
+      }
+
+      .nav.right {
+        right: 0;
+        transform: translateX(100%) translateY(-50%);
+      }
+      .img-fluid{
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const CARDS = 10;
+        const MAX_VISIBILITY = 3;
+        let active = 2;
+
+        const createCarousel = (cards) => {
+          const carousel = document.createElement("div");
+          carousel.className = "carousel";
+
+          const updateCarousel = () => {
+            cardContainers.forEach((container, i) => {
+              container.style.setProperty("--active", i === active ? 1 : 0);
+              container.style.setProperty("--offset", (active - i) / 3);
+              container.style.setProperty("--direction", Math.sign(active - i));
+              container.style.setProperty(
+                "--abs-offset",
+                Math.abs(active - i) / 3
+              );
+              container.style.pointerEvents = active === i ? "auto" : "none";
+              container.style.opacity =
+                Math.abs(active - i) >= MAX_VISIBILITY ? "0" : "1";
+              container.style.display =
+                Math.abs(active - i) > MAX_VISIBILITY ? "none" : "block";
+            });
+          };
+
+          const leftButton = document.createElement("button");
+          leftButton.className = "nav left";
+          leftButton.innerHTML = "◀"; // Simplified version of the icon
+          leftButton.onclick = () => {
+            if (active > 0) {
+              active--;
+              updateCarousel();
+            }
+          };
+          carousel.appendChild(leftButton);
+
+          const cardContainers = cards.map((card) => {
+            const container = document.createElement("div");
+            container.className = "card-container";
+            container.appendChild(card);
+            carousel.appendChild(container);
+            return container;
+          });
+
+          const rightButton = document.createElement("button");
+          rightButton.className = "nav right";
+          rightButton.innerHTML = "▶"; // Simplified version of the icon
+          rightButton.onclick = () => {
+            if (active < cards.length - 1) {
+              active++;
+              updateCarousel();
+            }
+          };
+          carousel.appendChild(rightButton);
+
+          updateCarousel();
+
+          return carousel;
+        };
+
+        const cards = Array.from({ length: CARDS }, (_, i) => {
+          const card = document.createElement("div");
+          card.className = "card";
+
+          const cardTitle = document.createElement("h2");
+          cardTitle.textContent = "Card " + (i + 1);
+          card.appendChild(cardTitle);
+
+          const cardImage = document.createElement("img");
+          cardImage.src = "https://source.unsplash.com/random"; // Replace with your desired image source
+          cardImage.classList.add("img-fluid")
+          card.appendChild(cardImage);
+
+          return card;
+        });
+
+        const app = document.createElement("div");
+        app.className = "app";
+        app.appendChild(createCarousel(cards));
+        document.body.appendChild(app);
+      });
+    </script>
+  </body>
+</html>

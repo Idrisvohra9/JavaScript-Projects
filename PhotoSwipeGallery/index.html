@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Photo Gallery</title>
+    <!-- <link rel="stylesheet" href="PhotoSwipe/src/photoswipe.css" /> -->
+    <link rel="stylesheet" href="./vendor.css" />
+
+    <!-- <link rel="stylesheet" href="path/to/default-skin/default-skin.css"> -->
+    <style>
+      /* Custom styles for your gallery */
+      .my-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .my-gallery img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="my-gallery">
+      <!-- Thumbnails for your gallery items -->
+      <figure>
+        <a
+          href="https://iv-portfolio.vercel.app/"
+          data-size="1600x1067"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1716736180285-1591a65140c2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOXx8fGVufDB8fHx8fA%3D%3D"
+            alt="Image 1"
+          />
+        </a>
+      </figure>
+      <figure>
+        <a
+          href="https://images.unsplash.com/photo-1716369967339-e40e46c00c05?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNXx8fGVufDB8fHx8fA%3D%3D"
+          data-size="1600x1067"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1716369967339-e40e46c00c05?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNXx8fGVufDB8fHx8fA%3D%3D"
+            alt="Image 2"
+          />
+        </a>
+      </figure>
+      <!-- Add more images as needed -->
+    </div>
+
+    <!-- photoswipe background
+    ================================================== -->
+    <div aria-hidden="true" class="pswp" role="dialog" tabindex="-1">
+      <div class="pswp__bg"></div>
+      <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+          <div class="pswp__item"></div>
+          <div class="pswp__item"></div>
+          <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--hidden">
+          <div class="pswp__top-bar">
+            <div class="pswp__counter"></div>
+            <button
+              class="pswp__button pswp__button--close"
+              title="Close (Esc)"
+            ></button>
+            <button
+              class="pswp__button pswp__button--share"
+              title="Share"
+            ></button>
+            <button
+              class="pswp__button pswp__button--fs"
+              title="Toggle fullscreen"
+            ></button>
+            <button
+              class="pswp__button pswp__button--zoom"
+              title="Zoom in/out"
+            ></button>
+            <div class="pswp__preloader">
+              <div class="pswp__preloader__icn">
+                <div class="pswp__preloader__cut">
+                  <div class="pswp__preloader__donut"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"
+          >
+            <div class="pswp__share-tooltip"></div>
+          </div>
+          <button
+            class="pswp__button pswp__button--arrow--left"
+            title="Previous (arrow left)"
+          ></button>
+          <button
+            class="pswp__button pswp__button--arrow--right"
+            title="Next (arrow right)"
+          ></button>
+          <div class="pswp__caption">
+            <div class="pswp__caption__center"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end photoSwipe background -->
+
+    <script src="./plugins.js"></script>
+    <!-- <script src="path/to/photoswipe-ui-default.min.js"></script> -->
+    <script>
+      // import PhotoSwipe from '/PhotoSwipe/src/js/photoswipe.js';
+      document.addEventListener("DOMContentLoaded", function () {
+        var pswpElement = document.querySelectorAll(".pswp")[0];
+        var items = [];
+        var galleryElements = document.querySelectorAll(".my-gallery a");
+
+        galleryElements.forEach(function (element, index) {
+          var size = element.getAttribute("data-size").split("x");
+          var item = {
+            src: element.getAttribute("href"),
+            w: parseInt(size[0], 10),
+            h: parseInt(size[1], 10),
+            title: element.querySelector("img").getAttribute("alt"),
+          };
+          items.push(item);
+
+          element.addEventListener("click", function (event) {
+            event.preventDefault();
+            var options = {
+              index: index,
+              showHideOpacity: true,
+            };
+            var gallery = new PhotoSwipe(
+              pswpElement,
+              PhotoSwipeUI_Default,
+              items,
+              options
+            );
+            gallery.init();
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
